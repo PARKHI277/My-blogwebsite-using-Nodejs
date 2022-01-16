@@ -32,7 +32,12 @@ app.get("/compose",function(req,res)
 
 app.post("/compose",function(req,res)
 {
-    console.log(req.body.Createpost);
+    
+    const create  = {
+        title: req.body.Createpost,
+        content: req.body.main
+    };
+    
 })
 
 app.listen(3000,function()
