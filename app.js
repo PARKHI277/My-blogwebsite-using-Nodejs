@@ -39,16 +39,29 @@ app.get("/compose",function(req,res)
 app.post("/compose",function(req,res)
 {
     
-    const create  = {
-        title: req.body.Createpost,
+    const post  = {
+        title: req.body.createpost,
         content: req.body.main
     };
 
-    posts.push(create);
+    posts.push(post);
 
     res.redirect("/");
     
 })
+
+app.get("/posts/:postName",function(req,res)
+{
+   const requestedTitle = req.params.postName;
+   posts.forEach(function(post)
+   {
+       const storedTitle = post.title;
+       if(storedTitle === requestedTitle)
+       {
+           console.log("Match found!");
+       }
+   })
+});
 
 app.listen(3000,function()
 {
