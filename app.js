@@ -7,9 +7,9 @@ app.set('view engine','ejs');
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-const homec = "ncjkn sncn kjnxjn jkqnxjnj jxjhaqxhjn hxnhxbhxh xhb";
-const aboutc = "ncjkn sncn kjnxjn jkqnxjnj jxjhaqxhjn hxnhxbhxh xhb";
-const contactc = "ncjkn sncn kjnxjn jkqnxjnj jxjhaqxhjn hxnhxbhxh xhb"; 
+const homec = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ullam reiciendis asperiores, dolore est nam in debitis inventore eaque explicabo quod saepe maxime quaerat voluptas ab pariatur sint. Pariatur, nam.";
+const aboutc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ullam reiciendis asperiores, dolore est nam in debitis inventore eaque explicabo quod saepe maxime quaerat voluptas ab pariatur sint. Pariatur, nam.";
+const contactc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ullam reiciendis asperiores, dolore est nam in debitis inventore eaque explicabo quod saepe maxime quaerat voluptas ab pariatur sint. Pariatur, nam."; 
 
 app.get("/",function(req,res)
 {
