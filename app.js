@@ -16,6 +16,16 @@ app.get("/",function(req,res)
      res.render("home",{deliver:homec});
 });
 
+app.get("/about",function(req,res)
+{
+    res.render("about",{deliverabout:aboutc});
+})
+
+app.get("/contact",function(req,res)
+{
+    res.render("contact",{delivercontact:contactc});
+})
+
 app.listen(3000,function()
 {
     console.log("Server started on port 3000");
