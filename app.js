@@ -1,72 +1,82 @@
 const express = require("express");
-const bodyparser = require("body-parser");
+const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const lodash = require("lodash");
+const mongoose = require('mongoose');
+
+const homec = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
+const aboutc = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
+const contactc = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 const app = express();
-app.set('view engine','ejs');
-app.use(bodyparser.urlencoded({extended:true}));
+
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-let posts = [];
+mongoose.connect("mongodb+srv://admin_parkhi:Parkhi123@cluster0.1xghe.mongodb.net/blogDB",{useNewUrlParser: true});
 
-const homec = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because "
-const aboutc = "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ullam reiciendis asperiores, dolore est nam in debitis inventore eaque explicabo quod saepe maxime quaerat voluptas ab pariatur sint. Pariatur, nam.";
-const contactc = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores"
-app.get("/",function(req,res)
-{
-     res.render("home",{deliver:homec,
-    posts:posts});
-  
+const postSchema = { 
+  title: String,
+  content: String
+};
+
+const Post = mongoose.model("Post", postSchema);
+
+app.get("/", function(req, res){
+
+  Post.find({}, function(err, posts)
+  {
+    res.render("home", {
+      startingContent: homec,
+      posts: posts
+      });
+  });
+
 });
 
-app.get("/about",function(req,res)
-{
-    res.render("about",{deliverabout:aboutc});
-})
-
-app.get("/contact",function(req,res)
-{
-    res.render("contact",{delivercontact:contactc});
-})
-app.get("/compose",function(req,res)
-{
-    res.render("compose");
-})
-
-
-
-app.post("/compose",function(req,res)
-{
-    
-    const post  = {
-        title: req.body.createpost,
-        content: req.body.main
-    };
-
-    posts.push(post);
-
-    res.redirect("/");
-    
-})
-
-app.get("/posts/:postName",function(req,res)
-{
-   const requestedTitle = lodash.lowerCase(req.params.postName);
-   posts.forEach(function(post)
-   {
-       const storedTitle = lodash.lowerCase(post.title);
-       if(storedTitle === requestedTitle)
-       {
-           res.render("post",{
-               title:post.title,
-               content:post.content
-           });
-       }
-   })
+app.get("/compose", function(req, res){
+  res.render("compose");
 });
 
-app.listen(3000,function()
+app.post("/compose", function(req, res){
+  const post = new Post({
+    title: req.body.postTitle,
+    content: req.body.postBody
+  });
+
+
+  post.save(function(err){
+    if (!err){
+        res.redirect("/");
+    }
+  });
+});
+
+app.get("/posts/:postId", function(req, res)
 {
-    console.log("Server started on port 3000");
-})
+
+const requestedPostId = req.params.postId;
+
+  Post.findOne({_id: requestedPostId}, function(err, post)
+  {
+    res.render("post", {
+      title: post.title,
+      content: post.content
+    });
+  });
+
+});
+
+app.get("/about", function(req, res){
+  res.render("about", {aboutContent: aboutc});
+});
+
+app.get("/contact", function(req, res){
+  res.render("contact", {contactContent: contactc});
+});
+
+
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
+});
