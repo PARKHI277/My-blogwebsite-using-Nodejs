@@ -2,39 +2,38 @@
 {
     padding-top:70px;
     padding-bottom:70px;
-    
 }
 body{
-    background-color: rgb(218, 184, 184);
+    background-color: rgba(153, 190, 179, 0.507);
 }
-
 .container
 {
     font-weight: 1000;
-    color:rgb(59, 180, 114);
+    
 }
 .navbar 
 {
-   background-color: rgb(59, 172, 102);
+   background-color: rgb(172 59 72);
+   padding-top: 12px;
+    padding-bottom: 10px;
+    font-size: 12px;
 }
-.navbar
-{
-    padding-top:15px;
-    padding-bottom:15px;
-    border:0;
-    border-radius:0;
-    margin-bottom:0;
-    font-size:12px;
-    letter-spacing:12px;
+.navbar-default .navbar-nav>li>a {
+    color: white;
 }
-.navbar-nav li a
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+
+/* .navbar-nav li a
 {
     color:black;
 }
 .navbar-nav li a:hover
 {
     color: red !important;
-}
+} */
 
 footer-padding
 {
@@ -81,4 +80,10 @@ textarea
 }
 button{
     margin-left:30px;
+    margin-top:15px;
+   
+}
+.add a
+{
+    text-decoration:none;
 }
