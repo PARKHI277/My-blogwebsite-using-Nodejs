@@ -9,6 +9,9 @@ body{
 .container
 {
     font-weight: 1000;
+    font-size : 40px;
+    font-style : normal;
+    font-variant: normal;
     
 }
 .navbar 
