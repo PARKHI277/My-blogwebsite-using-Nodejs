@@ -13,4 +13,5 @@ TO CONTRIBUTE IN THIS REPOSITARY YOU NEED TO FOLLOW THESE RULES:-
           node app.js
 
  - To create a pull request 
- - you need to make your feature branch and then push your changes
+ - you need to make your feature branch otherwise changes will not get merge 
+ - Then push your changes
