@@ -4,7 +4,7 @@
     padding-bottom:70px;
 }
 body{
-    background-color: rgba(153, 190, 179, 0.507);
+    background-color: rgba(153, 194, 182, 0.507);
 }
 .container
 {
@@ -16,7 +16,7 @@ body{
 }
 .navbar 
 {
-   background-color: rgb(172 59 72);
+   background-color: rgb(160, 55, 68);
    padding-top: 12px;
     padding-bottom: 10px;
     font-size: 12px;
@@ -49,7 +49,7 @@ footer-padding
    bottom:0;
     width:100%;
     height:60px;
-    background-color:rgb(59, 172, 102);
+    background-color:rgb(75, 167, 111);
 }
 .footer p 
 {
