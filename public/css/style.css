@@ -14,13 +14,13 @@ body{
     font-variant: normal;
     
 }
-.navbar 
+/* .navbar 
 {
    background-color: rgb(172 59 72);
    padding-top: 12px;
     padding-bottom: 10px;
     font-size: 12px;
-}
+} */
 .navbar-default .navbar-nav>li>a {
     color: white;
 }
