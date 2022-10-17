@@ -14,13 +14,12 @@
        </div>
    
    <ul class = "nav navbar-nav navbar-right">
-       <li id = "home"><a href = "/">HOME</a></li>
-       <li id = "about"><a href = "/about">ABOUTUS</a></li>
-       <li id = "contact"><a href = "/contact">CONTACTUS</a></li>
-    </ul>
-    <ul class = "nav navbar-nav navbar-left">
-        <button class = "add"><a href = "/compose">Add Post</a></button>
+       <li id = "home" class="<%=page=='home'?'active':''%>"><a href = "/">HOME</a></li>
+       <li id = "about" class="<%=page=='about'?'active':''%>"><a href = "/about">ABOUT US</a></li>
+       <li id = "contact" class="<%=page=='contact'?'active':''%>"><a href = "/contact">CONTACT US</a></li> 
+      <li id = "compose" class="composebtn <%=page=='compose'?'active':''%>"><a href = "/compose">ADD POST</a></li>     
     </ul>
        </div>
 </nav>
+<div class="blog-container container">
 

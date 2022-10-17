@@ -44,18 +44,20 @@ app.get("/", function (req, res) {
     res.render("home", {
       startingContent: homec,
       posts: posts,
+      page:'home'
     });
   });
 });
 
 app.get("/compose", function (req, res) {
-  res.render("compose");
+  res.render("compose" ,{ page:'compose' });
 });
 
 app.post("/compose", function (req, res) {
   const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody,
+    page:'compose'
   });
 
   post.save(function (err) {
@@ -72,16 +74,17 @@ app.get("/posts/:postId", function (req, res) {
     res.render("post", {
       title: post.title,
       content: post.content,
+      page:''
     });
   });
 });
 
 app.get("/about", function (req, res) {
-  res.render("about", { aboutContent: aboutc });
+  res.render("about", { aboutContent: aboutc , page:'about'});
 });
 
 app.get("/contact", function (req, res) {
-  res.render("contact", { contactContent: contactc });
+  res.render("contact", { contactContent: contactc, page:'contact' });
 });
 
 let port = process.env.PORT;
