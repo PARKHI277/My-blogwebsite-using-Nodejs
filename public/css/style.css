@@ -1,32 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .container-fluid
 {
-    padding-top:65px;
-    padding-bottom:65px;
+    padding-top:70px;
+    padding-bottom:70px;
 }
 body{
-    background-color: rgba(153, 194, 182, 0.507);
+    margin: 0px;
+    padding:0px;
+    background-color: rgba(153, 190, 179, 0.507);
+    font-family: 'Varela Round', sans-serif;
+}
+p{
+    padding:5px;
+    font-size: 18px;
+    font-family: 'Varela Round', sans-serif;
 }
 .container
 {
-    font-weight: 1000;
-    font-size : 38px;
     font-style : normal;
     font-variant: normal;
     
 }
 .navbar 
 {
-   background-color: rgb(160, 55, 68);
+   background-color: rgb(172 59 72);
    padding-top: 12px;
     padding-bottom: 10px;
-    font-size: 11px;
+    font-size: 12px;
+    border-radius: 0px;
+    border-color: inherit;
+   
 }
+.navbar li a {font-family: 'Varela Round', sans-serif; font-size: 16px;}
+.navbar-brand:hover {color:#fff!important; border-top: 1px solid white; border-bottom: 1px solid white;}
+
+.blog-container{
+    background-color: #ffff;
+    padding:20px 10px 20px 10px;
+}
+.composeform{
+    max-width: 80%;
+}
+.composebtn{
+    font-size: 16px;
+   
+}
+
 .navbar-default .navbar-nav>li>a {
     color: white;
+    margin-left: 5px;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    border-bottom: 1px solid white;
+ 
 }
 .navbar-default .navbar-brand {
     color: #fff;
 }
+
 
 
 /* .navbar-nav li a
@@ -48,13 +81,13 @@ footer-padding
     text-align:center;
    bottom:0;
     width:100%;
-    height:58px;
-    background-color:rgb(75, 167, 111);
+    height:60px;
+    background-color:rgb(59, 172, 102);
 }
 .footer p 
 {
     margin-top:25px;
-    font-size:11px;
+    font-size:12px;
     color:#fff;
 }
 h1
